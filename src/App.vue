@@ -1,12 +1,20 @@
 <template>
   <div>
+    <Form/>
+    <Goods/>
   </div>
 </template>
 
 <script>
+import Form from "./components/Form/Form";
+import Goods from "./components/Goods/Goods";
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Form,
+    Goods,
+  },
 }
 </script>
 
