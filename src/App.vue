@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Form/>
     <Goods/>
   </div>
@@ -19,11 +19,13 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .container {
+    max-width: 1440px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    grid-gap: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 32px;
+  }
 </style>
