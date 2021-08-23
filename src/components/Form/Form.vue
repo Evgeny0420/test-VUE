@@ -4,22 +4,22 @@
     <div class="form">
       <form class="form__forms">
         <div class="form__item">
-          <label for="name">Наименование товара</label>
-          <input  class="form__input" type="text" id="name" name="name" placeholder="Введите нименование товара">
+          <label for="name">Наименование товара<span></span></label>
+          <input  v-model="this.title" class="form__input" type="text" id="name" name="name" placeholder="Введите нименование товара" required>
         </div>
         <div class="form__item">
           <label for="about">Описание товара</label>
-          <textarea class="form__input form__input--textarea" name="about" id="about" cols="30" rows="10" placeholder="Введите описание товара"></textarea>
+          <textarea v-model="this.aboutText" class="form__input form__input--textarea" name="about" id="about" cols="30" rows="10" placeholder="Введите описание товара"></textarea>
         </div>
         <div class="form__item">
-          <label for="link-img">Ссылка на изображение товара</label>
-          <input class="form__input" type="text" name="link-img" id="link-img" placeholder="Введите ссылку">
+          <label class="required" for="link-img">Ссылка на изображение товара<span></span></label>
+          <input v-model.trim="this.link" class="form__input" type="text" name="link-img" id="link-img" placeholder="Введите ссылку" required>
         </div>
         <div class="form__item">
-          <label for="price">Цена товара</label>
-          <input class="form__input" type="text" name="price" id="price" placeholder="Введите цену">
+          <label class="required" for="price">Цена товара<span></span></label>
+          <input v-model="this.price" class="form__input" type="text" name="price" id="price" placeholder="Введите цену" required>
         </div>
-        <button class="form__button" type="submit">Добавить товар</button>
+        <button @click="getData()" class="form__button" type="submit">Добавить товар</button>
       </form>
     </div>
   </div>
@@ -27,7 +27,20 @@
 
 <script>
 export default {
-  name: 'Form'
+  name: 'Form',
+  data() {
+    return {
+      title: '',
+      aboutText: '',
+      link: '',
+      price: '',
+    }
+  },
+  methods: {
+    getData() {
+      console.log(this.title)
+    }
+  }
 };
 </script>
 
@@ -63,8 +76,24 @@ export default {
     line-height: 13px;
     letter-spacing: -0.02em;
     color: #49485E;
+
+    span {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 4px;
+        background: #FF8484;
+        border-radius: 4px;
+      }
+    }
   }
 }
+
 
 .form__input {
   height: 36px;
